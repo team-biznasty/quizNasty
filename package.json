@@ -1,0 +1,33 @@
+{
+  "name": "quizNasty",
+  "version": "1.0.0",
+  "description": "quizNasty",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-biznasty/quizNasty.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-biznasty/quizNasty/issues"
+  },
+  "homepage": "https://github.com/team-biznasty/quizNasty#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "mongoose": "^5.12.1",
+    "node": "^15.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
