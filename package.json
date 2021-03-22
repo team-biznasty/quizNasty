@@ -4,7 +4,11 @@
   "description": "quizNasty",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "nodemon index.js",
+    "frontend": "npm start --prefix frontend",
+    "bootstrap": "npm install --include=dev && cd frontend && npm install --include=dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,9 @@
   },
   "homepage": "https://github.com/team-biznasty/quizNasty#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
+    "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
