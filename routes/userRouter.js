@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
-const { route } = require("../../week9/InGame/routes/userRouter");
+const { route } = require("../routes/userRouter");
 
 router.post("/signup", async (req, res) => {
     try {
