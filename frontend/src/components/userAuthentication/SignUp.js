@@ -53,8 +53,9 @@ function SignUp() {
                        <input className="nameIn" id="name" type="text" placeholder="Enter name..." onChange={onChangeHandler} value={name}></input>
                        <h3>Email</h3>
                        <input className="emailIn" id="email" type="text" placeholder="Enter email.." onChange={onChangeHandler} value={email}></input>
+                       <h3>Password</h3>
                        <input className="passIn" id="password" type="password" placeholder="Enter password.." onChange={onChangeHandler} value={password}></input>
-                    <h3>Verify Password</h3>
+                       <h3>Verify Password</h3>
                     <input className="passConf" id="passwordConf" type="password" placeholder="Enter password.." onChange={onChangeHandler} value={passwordConf}></input>
                     <div>
                         <input className="submitButton" type="submit"></input>
