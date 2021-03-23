@@ -1,5 +1,6 @@
-const fetch = require("node-fetch");
-require("dotenv").config();
+// not required in front end:
+// const fetch = require("node-fetch");
+// require("dotenv").config();
 
 const getQuiz = async() =>{
     const url = `https://opentdb.com/api.php?amount=2`
