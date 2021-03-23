@@ -26,6 +26,9 @@ app.get('/', (req, res) => {
     
 });
 
+app.use("/auth", require("./routes/userRouter"));
+app.use(express.json());
+
 app.listen(3000, () => {
     console.log("Listening to port 3000");
 });
