@@ -9,5 +9,6 @@ const getQuiz = async() =>{
     return await data.json()
 }
 getQuiz()
-module.exports=getQuiz
+
+module.exports = getQuiz
 
