@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+setTimeout(()=> console.log("hiya"), 0)
+
 const Quiz = () => {
   //fetch single game - just change the id - use insomnia or compass or game._id
   const [question, setQuestion] = useState([]);
@@ -14,13 +16,12 @@ const Quiz = () => {
     getter();
   }, []);
 
-  console.log(question)
-  console.log(question.results[0].type)
+  console.log(JSON.stringify(question, null, 2))
+  
 
   
 
-  /* console.log(question[0].category)
-  console.log(question[0].question) */
+
 
 
   return (
