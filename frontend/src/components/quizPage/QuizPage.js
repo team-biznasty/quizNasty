@@ -15,6 +15,8 @@ const Quiz = () => {
   }, []);
 
   console.log(question)
+  console.log(question.results[0].type)
+
   
 
   /* console.log(question[0].category)
