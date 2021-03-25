@@ -7,6 +7,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [count, setCount] = useState(0);
   const [score, setScore] = useState(0);
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
     const getter = async () => {
@@ -16,6 +17,7 @@ const Quiz = () => {
       const data = await response.json();
       console.log(data);
       setQuestions(data.results);
+      setAnswers(data.results)
     };
     getter();
   }, []);
@@ -23,29 +25,34 @@ const Quiz = () => {
   const questionComponents = questions.map((question, index) => {
     return <div key={index}>{question.question}</div>;
   });
-
+console.log(answers[0].correct_answer)
   const questionCount = questionComponents[count];
 
-  const answerList = questions.map((answers, index) => {
-    const answers1 = [questions.incorrect_answers];
-    const answers2 = [questions.correct_answer];
-    const newAnswers = [answers1.concat(answers2)];
+/*const answerList = questions.map((answer, index) => {
+  return <div key={index}>{answer.correct_answer}</div>
+})*/
 
-    return (
-      <div key={index}>
-        {/* {answers.correct_answer + "," + answers.incorrect_answers} */}
-        {newAnswers}
-      </div>
-    );
-  });
+/*for incorrect answers map over incorrect answerrs and slice them out as individula objects returns
+3 seperated objects from the Array
 
-  const answerCount = answerList[count];
+then add the incorrect answers to answer list:
+add corecty answer to answer list 
+then shuffle
+*/
+
+// let answerList = () =>{
+//   questions.map((incAnswers, index) => {
+//       return((incAnswers.index.incorrect_answers));
+
+// })
+// }
+// console.log(answerList())
+ // const answerCount = answerList[count];
 
   return (
     <div>
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
       {questionCount}
-      {answerCount}
       <button className="submitButton" onClick={() => setCount(count + 1)}>
         Next Question
       </button>
