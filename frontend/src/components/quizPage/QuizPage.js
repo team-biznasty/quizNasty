@@ -28,19 +28,38 @@ const Quiz = () => {
 
   const questionCount = questionComponents[count];
 
-  const answerList = questions.map((answer, index) => {
+  const answerList = questions.map((question, index) => {
+    const answers = [question.correct_answer, ...question.incorrect_answers];
+    answers.sort(() => Math.random() - 0.5);
     return (
       <div key={index}>
-        {[...answer.incorrect_answers, answer.correct_answer]}
+        {answers.map((answer, idx) => {
+          if (answer === question.correct_answer) {
+            return (
+              <p className="correct_answer" key={idx}>
+                {answer}
+              </p>
+            );
+          } else {
+            return (
+              <p className="incorrect_answer" key={idx}>
+                {answer}
+              </p>
+            );
+          }
+        })}
       </div>
     );
   });
+
+  answerList.sort(() => Math.random() - 0.5);
+  // answerList is where answer components should be made.
   // const shuffle = (array) => {
   //   let shuffledArray = array.sort(() => Math.random() - 0.5);
   //   return shuffledArray;
   // };
 
-  console.log(answerList)
+  console.log(answerList);
   const answerCount = answerList[count];
 
   return (
@@ -48,6 +67,7 @@ const Quiz = () => {
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
       {questionCount}
       {answerCount}
+
       <button className="submitButton" onClick={() => setCount(count + 1)}>
         Next Question
       </button>
