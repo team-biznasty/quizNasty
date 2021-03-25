@@ -23,7 +23,7 @@ const Quiz = () => {
   }, []);
 
   const questionComponents = questions.map((question, index) => {
-    return <div key={index}>{question.question}</div>;
+    return <div key={question.id}>{question.question}</div>;
   });
 
   const questionCount = questionComponents[count];
@@ -32,17 +32,17 @@ const Quiz = () => {
     const answers = [question.correct_answer, ...question.incorrect_answers];
     answers.sort(() => Math.random() - 0.5);
     return (
-      <div key={index}>
+      <div key={question.id}>
         {answers.map((answer, idx) => {
           if (answer === question.correct_answer) {
             return (
-              <p className="correct_answer" key={idx}>
+              <p className="correct_answer" key={question.id}>
                 {answer}
               </p>
             );
           } else {
             return (
-              <p className="incorrect_answer" key={idx}>
+              <p className="incorrect_answer" key={question.id}>
                 {answer}
               </p>
             );
