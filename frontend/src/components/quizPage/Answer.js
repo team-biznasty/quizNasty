@@ -6,3 +6,4 @@
 // update counter so new questions and answers are generated
 
 //<Answer isCorrect={true} score={score} setScore={setScore} counter={counter} setCounter={setCounter}/>
+

@@ -11,4 +11,3 @@ const getQuiz = async() =>{
 getQuiz()
 
 module.exports = getQuiz
-
