@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const User = require("./models/user");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
@@ -33,8 +32,13 @@ connection.once("open", function () {
 //         }
 //     });
 // });
+const leaderBoardsRouter = require("./routes/leaderBoardsRouter");
+const signUpRouter = require("./routes/signUpRouter");
+const quizPageRoute = require("./routes/quizPageRoute")
 
-app.use("/auth", require("./routes/signUpRouter"));
+app.use("/scores", leaderBoardsRouter);
+app.use("/auth", signUpRouter);
+app.use("/quiz", quizPageRoute);
 app.use(express.json());
 
 app.listen(5000, () => {

@@ -67,7 +67,7 @@ const Quiz = () => {
 
     <div>
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
-      {questionCount}
+      {/* {questionCount} */}
       {answerCount}
       {score}
       {count}
