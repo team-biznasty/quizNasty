@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Answer from "./Answer";
 
 setTimeout(() => console.log("hiya"), 0);
 
@@ -19,7 +20,6 @@ const Quiz = () => {
       console.log(q1)
       const tmpregex = /&quot;/g;
       console.log(q1.replace(tmpregex, "\""));
-
       setQuestions(data.results);
       // setAnswers(data.results)
     };
@@ -30,45 +30,13 @@ const Quiz = () => {
     return <div key={question.id}>{question.question}</div>;
   });
 
- // const questionCount = Regexer(questionComponents[count]);
-  const answerList = questions.map((question, index) => {
-    const answers = [question.correct_answer, ...question.incorrect_answers];
-    function scoreIncrease() {
-      setCount(count + 1);
-
-      setScore(score + 1)
-    }
-
-    answers.sort(() => Math.random() - 0.5);
-    return (
-      <div key={question.id}>
-        {answers.map((answer, idx) => {
-          if (answer === question.correct_answer) {
-            return (
-              <p className="correct_answer" key={idx}>
-                <button onClick={scoreIncrease}> {answer} </button>
-              </p>
-            );
-          } else {
-            return (
-              <p className="incorrect_answer" key={idx}>
-                <button classname="incorrect" onClick={() => setCount(count + 1)}>{answer}</button>
-              </p>
-            );
-          }
-        })}
-      </div>
-    );
-  });
-
-  console.log(answerList);
-  const answerCount = answerList[count];
+  const questionCount = questionComponents[count];
   return (
 
     <div>
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
       {questionCount}
-      {answerCount}
+      <Answer isCorrect={true} score={score} setScore={setScore} counter={count} setCounter={setCount} questions={questions}/>
       {score}
       {count}
     </div>
