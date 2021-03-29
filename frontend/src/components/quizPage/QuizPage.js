@@ -60,7 +60,7 @@ const Quiz = () => {
           } else {
             return (
               <p className="incorrect_answer" key={idx}>
-                <button classname="incorrect" onClick={() => setCount(count + 1)}>{Replacer(answer)}</button>
+                <button className="incorrect" onClick={() => setCount(count + 1)}>{Replacer(answer)}</button>
               </p>
             );
           }

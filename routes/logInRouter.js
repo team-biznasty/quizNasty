@@ -3,6 +3,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
 routerLogIn.post("/login", async (req, res) => {
+  console.log(req.body)
   const { email, password } = req.body;
 
   User.findOne({ email }, async (err, user) => {
@@ -13,7 +14,7 @@ routerLogIn.post("/login", async (req, res) => {
     } else {
       const result = await bcrypt.compare(password, user.password);
       if (result) {
-        res.status(200).json({ msg: "Logged in", username: user.email });
+        res.status(200).json({ msg: "Logged in", username: user.email, name: user.name });
       } else {
         res.status(403).json({ msg: "Invalid password" });
       }
