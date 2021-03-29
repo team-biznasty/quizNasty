@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.png"
 
-const Navbar = () => {
+const Navbar = () => { 
     return (
         <div className="navbarContainer">
             <img src={logo} alt="quizNasty-logo" width="200px"/>
