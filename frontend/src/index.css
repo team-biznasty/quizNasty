@@ -47,3 +47,44 @@ h5 {
 p {
   font-size: 20px;
 }
+
+/********* Buttons *******/
+
+.yellowBtn {
+  width: 200px;
+  height: 80px;
+  background-color: var(--yellow);
+  color: var(--white);
+  font-size: 56px;
+  font-family: 'Bangers', cursive;
+  border: none;
+  border-radius: 22px;
+}
+
+.blueBtn {
+  width: 200px;
+  height: 80px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 56px;
+  font-family: 'Bangers', cursive;
+  border: none;
+  border-radius: 22px;
+}
+
+/* Navbar Area */
+
+.navbarContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+
+.userButtonArea {
+  width: 25%;
+}
+
+.signUpBtn {
+  margin-right: 2%;
+}
