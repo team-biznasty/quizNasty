@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import Replacer from "../Replacer"
+import Replacer from "../../lib/Replacer"
 
 setTimeout(() => console.log("hiya"), 0);
 
@@ -29,7 +29,7 @@ const Quiz = () => {
   }, []);
 
   const questionComponents = questions.map((question, index) => {
-    return <div key={question.id}>{question.question}</div>;
+    return <div key={question.id}>{Replacer(question.question)}</div>;
   });
 
  const questionCount = questionComponents[count];
@@ -54,13 +54,13 @@ const Quiz = () => {
           if (answer === question.correct_answer) {
             return (
               <p className="correct_answer" key={idx}>
-                <button onClick={scoreIncrease}> {answer} </button>
+                <button onClick={scoreIncrease}> {Replacer(answer)} </button>
               </p>
             );
           } else {
             return (
               <p className="incorrect_answer" key={idx}>
-                <button classname="incorrect" onClick={() => setCount(count + 1)}>{answer}</button>
+                <button classname="incorrect" onClick={() => setCount(count + 1)}>{Replacer(answer)}</button>
               </p>
             );
           }
@@ -75,7 +75,7 @@ const Quiz = () => {
 
     <div>
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
-      {/* {questionCount} */}
+      {questionCount}
       {answerCount}
       {score}
       {count}
