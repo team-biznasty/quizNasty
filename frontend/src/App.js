@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Quiz />
+      {/* <Footer /> */}
     </div>
   );
 }
