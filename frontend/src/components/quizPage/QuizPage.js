@@ -1,4 +1,6 @@
+
 import React, { useState, useEffect } from "react";
+import Replacer from "../Replacer"
 
 setTimeout(() => console.log("hiya"), 0);
 
@@ -15,10 +17,10 @@ const Quiz = () => {
         `https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple`
       );
       const data = await response.json();
-      const q1 = data.results[0].question
-      console.log(q1)
-      const tmpregex = /&quot;/g;
-      console.log(q1.replace(tmpregex, "\""));
+      // const q1 = data.results[0].question
+      // console.log(q1)
+      // const tmpregex = /&quot;/g;
+      // console.log(q1.replace(tmpregex, "\""));
 
       setQuestions(data.results);
       // setAnswers(data.results)
@@ -30,7 +32,13 @@ const Quiz = () => {
     return <div key={question.id}>{question.question}</div>;
   });
 
- // const questionCount = Regexer(questionComponents[count]);
+ const questionCount = questionComponents[count];
+// const qcString = JSON.stringify(questionCount);
+// console.log(qcString)
+//let strungQC = Replacer(qcString)
+//console.log(strungQC)
+
+ console.log(questionCount)
   const answerList = questions.map((question, index) => {
     const answers = [question.correct_answer, ...question.incorrect_answers];
     function scoreIncrease() {
