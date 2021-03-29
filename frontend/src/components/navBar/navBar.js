@@ -4,7 +4,7 @@ import Login from "../logIn/logIn";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-const Navbar = () => {
+const navBar = () => {
   return (
     <Router>
       <div>
@@ -43,4 +43,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default navBar;
