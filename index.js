@@ -23,6 +23,21 @@ connection.once("open", function () {
   console.log("MongoDB database connection established successfully!");
 });
 
+const leaderBoardsRouter = require("./routes/leaderBoardsRouter");
+const signUpRouter = require("./routes/signUpRouter");
+const quizPageRoute = require("./routes/quizPageRoute");
+const logInRoute = require("./routes/logInRouter");
+
+app.use("/scores", leaderBoardsRouter);
+app.use("/auth", signUpRouter);
+app.use("/quiz", quizPageRoute);
+app.use("/auth", logInRoute)
+app.use(express.json());
+
+app.listen(5000, () => {
+  console.log("Listening to port 5000");
+});
+
 // app.get('/', (req, res) => {
 //     new User({name:"Use",email:"user@email.com",password:"1234"}).save((err, obj) => {
 //         if (err){
@@ -32,15 +47,3 @@ connection.once("open", function () {
 //         }
 //     });
 // });
-const leaderBoardsRouter = require("./routes/leaderBoardsRouter");
-const signUpRouter = require("./routes/signUpRouter");
-const quizPageRoute = require("./routes/quizPageRoute")
-
-app.use("/scores", leaderBoardsRouter);
-app.use("/auth", signUpRouter);
-app.use("/quiz", quizPageRoute);
-app.use(express.json());
-
-app.listen(5000, () => {
-  console.log("Listening to port 5000");
-});
