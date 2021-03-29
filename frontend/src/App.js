@@ -1,8 +1,7 @@
 import "./App.css";
 //import SignUp from './components/signUp/SignUp'
 import Quiz from "./components/quizPage/QuizPage";
-import Navbar from "./components/navBar/Navbar"
-// import Footer from "./components/footer/footer"
+import Navbar from "./components/navBar/navBar"
 
 function App() {
   return (
