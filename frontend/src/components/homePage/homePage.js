@@ -4,7 +4,7 @@ const Homepage = () => {
   let history = useHistory();
 
   function onRandomQuiz() {
-    history.push("/randomquiz");
+    history.push("/quiz");
   }
 
   function onLeaderboard() {
