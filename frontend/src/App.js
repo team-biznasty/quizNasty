@@ -8,6 +8,7 @@ import Navbar from "./components/navBar/Navbar";
 import Login from "./components/logIn/logIn";
 import Footer from "./components/footer/footer";
 import Homepage from "./components/homePage/homePage";
+import NameForm from "./lib/quizGen"
 
 function App() {
   return (
