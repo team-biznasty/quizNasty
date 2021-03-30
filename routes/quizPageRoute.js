@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const QuizResults = require("../models/QuizResults");
 
-router.post("/", async (req, res) => {
+router.post("/quiz", async (req, res) => {
     const name = req.body.name;
     const difficulty = req.body.difficulty;
     const category = req.body.category;
