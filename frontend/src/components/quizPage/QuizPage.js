@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import Replacer from "../../lib/Replacer"
+// import PostScore from "../postingScore/PostingScore";
 
 setTimeout(() => console.log("hiya"), 0);
 
@@ -21,7 +22,6 @@ const Quiz = () => {
       // console.log(q1)
       // const tmpregex = /&quot;/g;
       // console.log(q1.replace(tmpregex, "\""));
-
       setQuestions(data.results);
       // setAnswers(data.results)
     };
@@ -79,6 +79,7 @@ const Quiz = () => {
       {answerCount}
       {score}
       {count}
+      {/* <PostScore difficulty={difficulty} category={category} amount={amount} score={score} /> */}
     </div>
   )
 }
