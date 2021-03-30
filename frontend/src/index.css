@@ -75,6 +75,29 @@ p {
   border-radius: 22px;
 }
 
+.circleBtn {
+  width: 500px;
+  height: 500px;
+  border: none;
+  border-radius: 50%;
+}
+
+/***** HomePage *******/
+
+.circlesWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
+  height: 70vh;
+}
+
+#blueCircleBtn {
+  margin-left: -20%;
+}
+
+/*** General CSS ***/
+
 .App {
   display: flex;
   flex-direction: column;

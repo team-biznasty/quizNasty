@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Replacer from "../../lib/Replacer"
 // import PostScore from "../postingScore/PostingScore";
+import QuizForm from "../../lib/quizGen"
+
 
 setTimeout(() => console.log("hiya"), 0);
 
@@ -74,6 +76,7 @@ const Quiz = () => {
   return (
 
     <div>
+     { QuizForm }
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
       {questionCount}
       {answerCount}
