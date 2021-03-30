@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-//   let history = useHistory();
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const loginAttempt = async (event) => {
     console.log(event);
     event.preventDefault();
-
     try {
       const response = await axios.post("http://localhost:5000/auth/login", {
           email,
@@ -23,10 +22,10 @@ const Login = () => {
         sessionStorage.setItem("loggedIn", "true");
         sessionStorage.setItem("email", data.username);
         sessionStorage.setItem("name", data.name);
-        // history.push("/main");
+        history.push("/");
         console.log("main")
       } else {
-        // history.push("/signup");
+        history.push("/signup");
         console.log("signup")
       }
     } catch (error) {
