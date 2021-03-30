@@ -3,18 +3,23 @@ import Replacer from "../../lib/Replacer";
 // import PostScore from "../postingScore/PostingScore";
 import QuizForm from "../../lib/quizGen";
 
-
-const Quiz = () => {
+const Quiz = (props) => {
   //fetch single game - just change the id - use insomnia or compass or game._id
   const [questions, setQuestions] = useState([]);
   const [count, setCount] = useState(0);
   const [score, setScore] = useState(0);
+  const [difficulty, setDifficulty] = useState('');
+  const [category, setCategory] = useState('');
+  const [amount, setAmount] = useState(10)
   // const [answers, setAnswers] = useState([]);
 
-  useEffect(() => {
+  
+  const onSubmit = () => {
+    console.log(difficulty);
+    console.log(category);
     const getter = async () => {
       const response = await fetch(
-        `https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple`
+        `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
       );
       const data = await response.json();
       // const q1 = data.results[0].question
@@ -25,7 +30,7 @@ const Quiz = () => {
       // setAnswers(data.results)
     };
     getter();
-  }, []);
+  };
 
   const questionComponents = questions.map((question, index) => {
     return (
@@ -84,12 +89,16 @@ const Quiz = () => {
   const answerCount = answerList[count];
   return (
     <div>
-      {QuizForm}
+      <QuizForm onSubmit={onSubmit} category={category} setCategory={setCategory} difficulty={difficulty} setDifficulty={setDifficulty} />
       {/* {questionComponents.length > 0 ? questionComponents : null} */}
       {questionCount}
       <div>{answerCount}</div>
-      <div className="currentScore gameDetails"><h2>Total Score: {score}</h2></div>
-      <div className="currentQuestion gameDetails"><h2>Current Question #{count}</h2></div>
+      <div className="currentScore gameDetails">
+        <h2>Total Score: {score}</h2>
+      </div>
+      <div className="currentQuestion gameDetails">
+        <h2>Current Question #{count}</h2>
+      </div>
       {/* <PostScore difficulty={difficulty} category={category} amount={amount} score={score} /> */}
     </div>
   );
