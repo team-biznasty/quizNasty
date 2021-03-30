@@ -10,6 +10,7 @@ import Homepage from "./components/homePage/homePage";
 import Leaderboard from "./components/leaderBoards/leaderBoards";
 import Profile from "./components/profilePage/profilePage";
 import About from "./components/about/aboutPage";
+import QuizForm from "./lib/quizGen"
 
 function App() {
   return (
