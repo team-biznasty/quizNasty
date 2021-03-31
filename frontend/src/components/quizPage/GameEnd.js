@@ -33,11 +33,13 @@ function GameEnd(props)  {
   const endOfGame = (event) => {
     event.preventDefault();
     props.setGameEnd(true);
+    props.setGameStart(false);
   };
 
   const restartGame = (event) => {
     event.preventDefault();
     props.setGameStart(false);
+    props.setGameStart(true);
   };
 
   return (
