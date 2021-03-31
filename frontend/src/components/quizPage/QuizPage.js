@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Replacer from "../../lib/Replacer";
-// import PostScore from "../postingScore/PostingScore";
+import GameEnd from "./GameEnd";
 import QuizForm from "../../lib/quizGen";
 import Answer from "./Answer";
 
@@ -11,6 +11,8 @@ const Quiz = (props) => {
   const [score, setScore] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
+  const [gameEnd, setGameEnd] = useState("");
+  const [gameStart, setGameStart] = useState("");
 
   const onSubmit = () => {
     const getter = async () => {
@@ -42,44 +44,68 @@ const Quiz = (props) => {
     return shuffledArray;
   };
 
+  const playQuiz = () => {
+    if (count === 5) {
+      setGameStart(false);
+      setGameEnd(true);
+      return;
+    }
+    return (
+      <div>
+        {" "}
+        <div className="current">
+          <h1>{questions[count].question}</h1>
+        </div>
+        {questions[count].answers.map((answer, index) => {
+          return (
+            <Answer
+              text={answer}
+              key={index}
+              isCorrect={answer === questions[count].correctAnswer}
+              score={score}
+              setScore={setScore}
+              count={count}
+              setCount={setCount}
+            />
+          );
+        })}{" "}
+      </div>
+    );
+  };
+
   return (
     <div>
-      <QuizForm
-        onSubmit={onSubmit}
-        category={category}
-        setCategory={setCategory}
-        difficulty={difficulty}
-        setDifficulty={setDifficulty}
-      />
       <div className="currentScore gameDetails">
         <h2>Total Score: {score}</h2>
       </div>
       <div className="currentQuestion gameDetails">
-        <h2>Current Question #{count+1}</h2>
+        <h2>Current Question #{count + 1}</h2>
       </div>
-      {questions.length <= 0 ? null : (
-        <div>
-          {" "}
-          <div className="current">
-            <h1>{questions[count].question}</h1>
-          </div>
-          {questions[count].answers.map((answer, index) => {
-            return (
-              <Answer
-                text={answer}
-                key={index}
-                isCorrect={answer === questions[count].correctAnswer}
-                score={score}
-                setScore={setScore}
-                count={count}
-                setCount={setCount}
-              />
-            );
-          })}{" "}
-        </div>
+      {gameEnd ? (
+        <GameEnd
+          difficulty={difficulty}
+          category={category}
+          score={score}
+          gameEnd={gameEnd}
+          setGameEnd={setGameEnd}
+          gameStart={gameStart}
+          setGameStart={setGameStart}
+        />
+      ) : (
+        <>
+          {gameStart && !GameEnd ? (
+            playQuiz()
+          ) : (
+            <QuizForm
+              onSubmit={onSubmit}
+              category={category}
+              setCategory={setCategory}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+            />
+          )}
+        </>
       )}
-      
-      {/* <PostScore difficulty={difficulty} category={category} amount={amount} score={score} /> */}
     </div>
   );
 };
