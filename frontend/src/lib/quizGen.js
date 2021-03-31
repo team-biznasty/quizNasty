@@ -1,38 +1,23 @@
 import React from "react"
 
-class QuizForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            difficulty: '',
-            category: '',
-            amount: '10'
-        };
+const QuizForm = (props) => {
 
-        this.handleCategoryChange = this.handleCategoryChange.bind(this);
-        this.handleDifficultyChange = this.handleDifficultyChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this);
+    const handleCategoryChange = (event) => {
+        props.setCategory(event.target.value);
+    }
+    const handleDifficultyChange = (event) => {
+        props.setDifficulty(event.target.value)
     }
 
-    handleCategoryChange(event) {
-        this.setState({ category: event.target.value });
-    }
-    handleDifficultyChange(event){
-        this.setState({difficulty: event.target.value})
-    }
-
-    handleSubmit(event) {
-        console.log(this.state)
-
-
+    const handleSubmit = (event) => {
         event.preventDefault();
+        props.onSubmit();
     }
-    render() {
         return (
-            <form className="questionConstructor" onSubmit={this.handleSubmit}>
+            <form className="questionConstructor" onSubmit={handleSubmit}>
                 <label>
                     Pick a difficulty
-                    <select value={this.state.value} onChange={this.handleDifficultyChange}>
+                    <select value={props.difficulty} onChange={handleDifficultyChange}>
                         {/* <option value="">Any Difficulty</option> */}
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
@@ -42,7 +27,7 @@ class QuizForm extends React.Component {
 
                 <label>
                     Pick a category
-                    <select value={this.state.value} onChange={this.handleCategoryChange}>
+                    <select value={props.category} onChange={handleCategoryChange}>
                     <option value="">Any Difficulty</option>
                         <option value="">Any</option>
                         <option value="9">General Knowledge</option>
@@ -74,7 +59,6 @@ class QuizForm extends React.Component {
                     <input type="submit" value="Submit" ></input>
             </form>
             )
-    }
 }
 
 

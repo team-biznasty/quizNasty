@@ -1,8 +1,5 @@
 import logo from "../../assets/logo.png";
-import SignUp from "../signUp/SignUp";
-import Login from "../logIn/logIn";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {Route, Link } from "react-router-dom";
 
 const Navbar = () => {
   return (

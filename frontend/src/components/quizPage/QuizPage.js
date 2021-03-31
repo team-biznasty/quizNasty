@@ -1,91 +1,87 @@
-
 import React, { useState, useEffect } from "react";
-import Replacer from "../../lib/Replacer"
+import Replacer from "../../lib/Replacer";
 // import PostScore from "../postingScore/PostingScore";
-import QuizForm from "../../lib/quizGen"
+import QuizForm from "../../lib/quizGen";
+import Answer from "./Answer";
 
-
-setTimeout(() => console.log("hiya"), 0);
-
-const Quiz = () => {
+const Quiz = (props) => {
   //fetch single game - just change the id - use insomnia or compass or game._id
   const [questions, setQuestions] = useState([]);
   const [count, setCount] = useState(0);
   const [score, setScore] = useState(0);
-  // const [answers, setAnswers] = useState([]);
+  const [difficulty, setDifficulty] = useState("");
+  const [category, setCategory] = useState("");
 
-  useEffect(() => {
+  const onSubmit = () => {
     const getter = async () => {
       const response = await fetch(
-        `https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple`
+        `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
       );
       const data = await response.json();
-      // const q1 = data.results[0].question
-      // console.log(q1)
-      // const tmpregex = /&quot;/g;
-      // console.log(q1.replace(tmpregex, "\""));
-      setQuestions(data.results);
-      // setAnswers(data.results)
+      setQuestions(
+        data.results.map((question, index) => {
+          return {
+            category: question.category,
+            type: question.type,
+            difficulty: question.difficulty,
+            question: Replacer(question.question),
+            answers: shuffle([
+              question.correct_answer,
+              ...question.incorrect_answers,
+            ]).map((text) => Replacer(text)),
+            correctAnswer: Replacer(question.correct_answer),
+          };
+        })
+      );
     };
     getter();
-  }, []);
+  };
 
-  const questionComponents = questions.map((question, index) => {
-    return <div key={question.id}>{Replacer(question.question)}</div>;
-  });
+  const shuffle = (array) => {
+    let shuffledArray = array.sort(() => Math.random() - 0.5);
+    return shuffledArray;
+  };
 
- const questionCount = questionComponents[count];
-// const qcString = JSON.stringify(questionCount);
-// console.log(qcString)
-//let strungQC = Replacer(qcString)
-//console.log(strungQC)
-
- console.log(questionCount)
-  const answerList = questions.map((question, index) => {
-    const answers = [question.correct_answer, ...question.incorrect_answers];
-    function scoreIncrease() {
-      setCount(count + 1);
-
-      setScore(score + 1)
-    }
-
-    answers.sort(() => Math.random() - 0.5);
-    return (
-      <div key={question.id}>
-        {answers.map((answer, idx) => {
-          if (answer === question.correct_answer) {
-            return (
-              <p className="correct_answer" key={idx}>
-                <button onClick={scoreIncrease}> {Replacer(answer)} </button>
-              </p>
-            );
-          } else {
-            return (
-              <p className="incorrect_answer" key={idx}>
-                <button className="incorrect" onClick={() => setCount(count + 1)}>{Replacer(answer)}</button>
-              </p>
-            );
-          }
-        })}
-      </div>
-    );
-  });
-
-  console.log(answerList);
-  const answerCount = answerList[count];
   return (
-
     <div>
-     { QuizForm }
-      {/* {questionComponents.length > 0 ? questionComponents : null} */}
-      {questionCount}
-      {answerCount}
-      {score}
-      {count}
+      <QuizForm
+        onSubmit={onSubmit}
+        category={category}
+        setCategory={setCategory}
+        difficulty={difficulty}
+        setDifficulty={setDifficulty}
+      />
+      <div className="currentScore gameDetails">
+        <h2>Total Score: {score}</h2>
+      </div>
+      <div className="currentQuestion gameDetails">
+        <h2>Current Question #{count+1}</h2>
+      </div>
+      {questions.length <= 0 ? null : (
+        <div>
+          {" "}
+          <div className="current">
+            <h1>{questions[count].question}</h1>
+          </div>
+          {questions[count].answers.map((answer, index) => {
+            return (
+              <Answer
+                text={answer}
+                key={index}
+                isCorrect={answer === questions[count].correctAnswer}
+                score={score}
+                setScore={setScore}
+                count={count}
+                setCount={setCount}
+              />
+            );
+          })}{" "}
+        </div>
+      )}
+      
       {/* <PostScore difficulty={difficulty} category={category} amount={amount} score={score} /> */}
     </div>
-  )
-}
-
+  );
+};
 
 export default Quiz;
