@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const QuizResults = require("../models/QuizResults");
 
+//instead of "name": "Paul" should be sessionStorage.user
+
 router.get("/quizresults", async (req, res) => {
     QuizResults.find({"name": "Paul"}, (err, obj) => {
         if (err) {
