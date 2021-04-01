@@ -9,6 +9,7 @@ import Homepage from "./components/homePage/homePage";
 import Leaderboard from "./components/leaderBoards/leaderBoards";
 import Profile from "./components/profilePage/profilePage";
 import About from "./components/about/aboutPage";
+import Faq from "./components/faq/faq";
 
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route exact path="/user-profile">
               <ProfilePage />
+            </Route>
+            <Route exact path="/faq">
+              <Faq/>
             </Route>
           </div>
         </Switch>
