@@ -35,7 +35,6 @@ const PostScore = async (props) => {
             </button>
         </div>
     );
-
 };
 
 export default PostScore;

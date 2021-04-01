@@ -4,7 +4,7 @@ const QuizResults = require("../models/QuizResults");
 //instead of "name": "Paul" should be sessionStorage.user
 
 router.get("/quizresults", async (req, res) => {
-    QuizResults.find({"name": "Paul"}, (err, obj) => {
+    QuizResults.find({}, (err, obj) => {
         if (err) {
             return res.status(400).json({
                 errorMessage: "You have not posted any high scores"
