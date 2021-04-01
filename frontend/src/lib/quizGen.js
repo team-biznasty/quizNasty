@@ -28,7 +28,7 @@ const QuizForm = (props) => {
                 <label>
                     Pick a category
                     <select value={props.category} onChange={handleCategoryChange}>
-                    <option value="">Any Difficulty</option>
+                    <option value="">Any Category</option>
                         <option value="">Any</option>
                         <option value="9">General Knowledge</option>
                         <option value="10">Entertainment: Books</option>

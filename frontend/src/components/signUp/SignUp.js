@@ -27,6 +27,7 @@ function SignUp() {
       setPasswordCheck("");
       sessionStorage.setItem("loggedIn", true);
       sessionStorage.setItem("email", jsondata.email);
+      sessionStorage.setItem("name", data.name);
     } catch (err) {
       console.log(err);
     }
