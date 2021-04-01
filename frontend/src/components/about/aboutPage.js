@@ -1,7 +1,10 @@
 function About() {
   return (
     <div className="aboutContainer">
+      <div className="aboutHeader">
       <p>Quiz Nasty was brought to you by the Biz Nasty Team consisting of:</p>
+      </div>
+      <div className="gitLinks">
       <ul>
         <a href="https://github.com/ap42m">Adam</a>
         <br></br>
@@ -11,6 +14,7 @@ function About() {
         <br></br>
         <a href="https://github.com/netty-carroll">Netty</a>
       </ul>
+      </div>
       <br></br>
       <p>if you would like to find out more about the team please consider checking our github profiles listed above.
       This website is our final project for the The Code Nation Master Coding Course. For this website we created a full mern app to help consolidate the knowledge gained throughout this learning journey.
