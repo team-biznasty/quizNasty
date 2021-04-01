@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Replacer from "../../lib/Replacer";
-import GameEnd from "./GameEnd";
+// import PostScore from "../postingScore/PostingScore";
 import QuizForm from "../../lib/quizGen";
 import Answer from "./Answer";
 
 const Quiz = (props) => {
+  //fetch single game - just change the id - use insomnia or compass or game._id
   const [questions, setQuestions] = useState([]);
   const [count, setCount] = useState(0);
   const [score, setScore] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
-  const [gameEnd, setGameEnd] = useState(false);
-  const [gameStart, setGameStart] = useState(false);
-  //pretty sure I'm not quite updating GameEnd and GameStart in the right places.
 
   const onSubmit = () => {
-    playQuiz();
-    console.log(gameStart)
     const getter = async () => {
       const response = await fetch(
         `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
@@ -46,45 +42,20 @@ const Quiz = (props) => {
     return shuffledArray;
   };
 
-  const playQuiz = () => {
-    //something like this to update the states?
-    if (count === 5) {
-      setGameStart(true);
-      setGameEnd(false);
-    }
-    console.log("hello")
-    // so the console logs hello so Submit is invoking playQuiz but for some reason line 56 Cannot read property 'question' of undefined.  
-    // I'm not sure why that is. Worked when it was in the return down the bottom, doesn't when its put in a function ¯\_(ツ)_/¯ 
-    return (
-      <div>
-        {" "}
-        <div className="current">
-          <h1>{questions[count].question}</h1>
-        </div>
-        {questions[count].answers.map((answer, index) => {
-          return (
-            <Answer
-              text={answer}
-              key={index}
-              isCorrect={answer === questions[count].correctAnswer}
-              score={score}
-              setScore={setScore}
-              count={count}
-              setCount={setCount}
-            />
-          );
-        })}{" "}
-      </div>
-    );
-  };
-
   return (
     <div>
+      <QuizForm
+        onSubmit={onSubmit}
+        category={category}
+        setCategory={setCategory}
+        difficulty={difficulty}
+        setDifficulty={setDifficulty}
+      />
       <div className="currentScore gameDetails">
         <h2>Total Score: {score}</h2>
       </div>
       <div className="currentQuestion gameDetails">
-        <h2>Current Question #{count + 1}</h2>
+        <h2>Current Question #{count+1}</h2>
       </div>
       {(questions.length <= 0 || count > 4) ? 
       (questions.length > 0 && count === questions.length  ) ?
