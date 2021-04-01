@@ -3,6 +3,7 @@ import Replacer from "../../lib/Replacer";
 // import PostScore from "../postingScore/PostingScore";
 import QuizForm from "../../lib/quizGen";
 import Answer from "./Answer";
+import axios from 'axios';
 
 const Quiz = (props) => {
   //fetch single game - just change the id - use insomnia or compass or game._id
@@ -37,6 +38,33 @@ const Quiz = (props) => {
     getter();
   };
 
+const submitScore = async (event) => {
+  event.preventDefault();
+  alert("It worked");
+
+
+    try {
+        const response = await axios.post("http://localhost:5000/quiz", {
+            name: sessionStorage.getItem("name"), 
+            // difficulty: difficulty, 
+            // category: category, 
+            // amount: 5, 
+            score: score,
+        });
+        const data = await response.data;
+        console.log(data);
+        if (response.status === 200) {
+            alert("Score Submitted")
+            //how can you add an alert to tell the user it was successful?
+        } else {
+            console.log("something went wrong")
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+} 
+
   const shuffle = (array) => {
     let shuffledArray = array.sort(() => Math.random() - 0.5);
     return shuffledArray;
@@ -59,7 +87,7 @@ const Quiz = (props) => {
       </div>
       {(questions.length <= 0 || count > 4) ? 
       (questions.length > 0 && count === questions.length  ) ?
-      <h1>Game Over</h1> :
+      <button className="submitScore" onClick={submitScore}>Submit Score</button> :
       null :
             (
         <div>

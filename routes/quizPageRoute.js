@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const QuizResults = require("../models/QuizResults");
 
-router.post("/quiz", async (req, res) => {
+router.post("/", async (req, res) => {
     const name = req.body.name;
     const difficulty = req.body.difficulty;
     const category = req.body.category;
@@ -15,7 +15,8 @@ router.post("/quiz", async (req, res) => {
         score:score,
     }).save((err, obj) => {
         if (err) {
-          res.status(500).json({ msg: error });
+          console.log(err)
+          res.status(500).json({ msg: err });
         } else {
           res.status(200).json(obj);
         }
