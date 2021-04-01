@@ -7,7 +7,7 @@ const Navbar = () => {
       <div>
         <div className="navbarContainer">
         <Link to="/">
-          <img src={logo} alt="quizNasty-logo" width="200px" />]
+          <img src={logo} alt="quizNasty-logo" width="200px" />
           </Link>
           <div className="userButtonArea">
             <Link to="/signup">

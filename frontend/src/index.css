@@ -28,15 +28,15 @@ body {
 
 /***** Fonts *****/
 h1 {
-  font-size: 56px;
+  font-size: 46px;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 36px;
 }
 
 h3 {
-  font-size: 34px;
+  font-size: 30px;
 }
 
 h4 {
@@ -112,13 +112,11 @@ p {
   align-items: center;
   justify-content: space-around;
   padding-top: 1%;
-  border: 2px solid rgb(33, 108, 13);
   height: 20vh;
 }
 
 .userButtonArea {
   width: 25%;
-  border: 2px solid rgb(167, 97, 22);
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -134,7 +132,6 @@ p {
   display: flex;
   flex: 1 0 auto;
   height: 70vh;
-  border: 2px solid rgba(138, 9, 86, 0.66);
   align-items: center;
   justify-content: center;
 }

@@ -1,0 +1,21 @@
+h1{
+    color: var(--blue);
+}
+
+.boardsArea{
+    border: 1px solid var(--blue);
+    width: 80vw;
+}
+
+.boardsArea thead tr {
+    background-color: var(--blue);
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    height: 3vw;
+    font-size: 36px;
+}
+
+.boardsArea tbody tr {
+    font-size: 24px;
+}
