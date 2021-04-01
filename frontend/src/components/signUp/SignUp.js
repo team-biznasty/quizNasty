@@ -54,7 +54,7 @@ function SignUp() {
         <form className="SignUpInput" onSubmit={getResponse}>
           <h3>Name</h3>
           <input
-            className="nameIn"
+            className="nameIn placeholder signUpPlaceholder"
             id="name"
             type="text"
             placeholder="Enter name..."
@@ -63,7 +63,7 @@ function SignUp() {
           ></input>
           <h3>Email</h3>
           <input
-            className="emailIn"
+            className="emailIn placeholder signUpPlaceholder"
             id="email"
             type="text"
             placeholder="Enter email.."
@@ -72,7 +72,7 @@ function SignUp() {
           ></input>
           <h3>Password</h3>
           <input
-            className="passIn"
+            className="passIn placeholder signUpPlaceholder"
             id="password"
             type="password"
             placeholder="Enter password.."
@@ -81,7 +81,7 @@ function SignUp() {
           ></input>
           <h3>Verify Password</h3>
           <input
-            className="passConf"
+            className="passConf placeholder signUpPlaceholder"
             id="passwordConf"
             type="password"
             placeholder="Enter password.."
@@ -89,7 +89,7 @@ function SignUp() {
             value={passwordCheck}
           ></input>
           <div>
-            <input className="submitButton" type="submit"></input>
+            <input className="submitButton blueBtn" type="submit"></input>
           </div>
         </form>
       </div>

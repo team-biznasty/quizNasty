@@ -82,6 +82,11 @@ p {
   border-radius: 50%;
 }
 
+.submitButton {
+  width: 70%;
+  margin-top: 3%;
+}
+
 /***** HomePage *******/
 
 .circlesWrapper {
@@ -131,7 +136,7 @@ p {
 .contentArea {
   display: flex;
   flex: 1 0 auto;
-  height: 70vh;
+
   align-items: center;
   justify-content: center;
 }
@@ -143,18 +148,52 @@ p {
   justify-content: center;
 }
 
-.answerBtn{
+.answerBtn {
   width: 100%;
   height: 100%;
   margin-left: 30px;
 }
 
-.gameDetails {}
-
 .topicsContainer {
   width: 50vw;
 }
 
+.placeholder {
+  padding: 2%;
+}
+
+.signUpPlaceholder {
+  border: 4px solid var(--blue);
+  border-radius: 10px;
+}
+
+.logInForm {
+  width: 30vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.loginPlaceholder {
+  border: 4px solid var(--yellow);
+  border-radius: 10px;
+  padding: 5% 10%;
+}
+
+.logInButton{
+  width: 7vw;
+  height: 5vh;
+  text-align: center;
+  font-size: 24px;
+}
+
+::placeholder {
+  color: var(--gray);
+  font-family: "Bangers", cursive;
+  font-size: 20px;
+}
 
 /****** Footer Area ******/
 
@@ -164,6 +203,7 @@ p {
   height: 10vh;
   display: flex;
   align-items: center;
+  margin-top: 2%;
 }
 
 .footerLinks {

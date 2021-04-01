@@ -51,19 +51,19 @@ const Login = () => {
           id="email"
           onChange={handleSubmit}
           type="text"
-          className="emailLogIn"
+          className="emailLogIn placeholder loginPlaceholder"
           placeholder="Account email address"
         />
-        <br />
+       
         <input
           id="password"
           onChange={handleSubmit}
           type="password"
-          className="passwordLogIn"
+          className="passwordLogIn placeholder loginPlaceholder"
           placeholder="Account password"
         />
-        <br />
-        <button className="logInButton" type="submit">
+      
+        <button className="logInButton yellowBtn" type="submit">
           Log In
         </button>
       </form>
