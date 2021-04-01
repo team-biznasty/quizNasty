@@ -86,31 +86,33 @@ const Quiz = (props) => {
       <div className="currentQuestion gameDetails">
         <h2>Current Question #{count + 1}</h2>
       </div>
-      {gameEnd ? (
-        <GameEnd
-          difficulty={difficulty}
-          category={category}
-          score={score}
-          gameEnd={gameEnd}
-          setGameEnd={setGameEnd}
-          gameStart={gameStart}
-          setGameStart={setGameStart}
-        />
-      ) : (
-        <>
-          {gameStart && !GameEnd ? (
-            playQuiz()
-          ) : (
-            <QuizForm
-              onSubmit={onSubmit}
-              category={category}
-              setCategory={setCategory}
-              difficulty={difficulty}
-              setDifficulty={setDifficulty}
-            />
-          )}
-        </>
-      )}
+      {(questions.length <= 0 || count > 4) ? 
+      (questions.length > 0 && count === questions.length  ) ?
+      <h1>Game Over</h1> :
+      null :
+            (
+        <div>
+          {" "}
+          <div className="current">
+            <h1>{questions[count].question}</h1>
+          </div>
+          {questions[count].answers.map((answer, index) => {
+            return (
+              <Answer
+                text={answer}
+                key={index}
+                isCorrect={answer === questions[count].correctAnswer}
+                score={score}
+                setScore={setScore}
+                count={count}
+                setCount={setCount}
+              />
+            );
+          })}{" "}
+        </div>
+      )    }
+      
+      {/* <PostScore difficulty={difficulty} category={category} amount={amount} score={score} /> */}
     </div>
   );
 };
